@@ -1,0 +1,9 @@
+2025-05-11 20:30:50.178 [info] Started initializing default profile extensions in extensions installation folder. file:///home/laborant/.local/share/code-server/extensions
+2025-05-11 20:30:50.290 [info] Completed initializing default profile extensions in extensions installation folder. file:///home/laborant/.local/share/code-server/extensions
+2025-05-11 20:30:51.406 [info] Getting Manifest... redhat.vscode-yaml
+2025-05-11 20:30:51.938 [info] Installing extension: redhat.vscode-yaml {"isMachineScoped":false,"installPreReleaseVersion":false,"donotIncludePackAndDependencies":false,"isBuiltin":false,"installGivenVersion":false,"isApplicationScoped":false,"profileLocation":{"$mid":1,"fsPath":"/home/laborant/.local/share/code-server/extensions/extensions.json","external":"file:///home/laborant/.local/share/code-server/extensions/extensions.json","path":"/home/laborant/.local/share/code-server/extensions/extensions.json","scheme":"file"},"productVersion":{"version":"1.99.3","date":"2025-04-24T19:29:01.118Z"}}
+2025-05-11 20:30:53.243 [error] Could not load vsce-sign module Cannot find package '@vscode/vsce-sign' imported from /usr/lib/code-server/lib/vscode/out/server-main.js
+2025-05-11 20:30:53.243 [info] Extension signature verification is not done: redhat.vscode-yaml
+2025-05-11 20:30:53.292 [info] Extracted extension to file:///home/laborant/.local/share/code-server/extensions/redhat.vscode-yaml-1.18.0-universal: redhat.vscode-yaml
+2025-05-11 20:30:53.305 [info] Renamed to /home/laborant/.local/share/code-server/extensions/redhat.vscode-yaml-1.18.0-universal
+2025-05-11 20:30:53.335 [info] Extension installed successfully: redhat.vscode-yaml file:///home/laborant/.local/share/code-server/extensions/extensions.json

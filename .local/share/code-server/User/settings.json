@@ -1,0 +1,17 @@
+{
+  "remote.autoForwardPorts": false,
+  "telemetry.telemetryLevel": "off",
+  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.remote.experimental.showStartListEntry": false,
+  "workbench.startupEditor": "none",
+  "workbench.statusBar.visible": true,
+  "workbench.welcome.experimental.dialog": false,
+  "workbench.welcomePage.walkthroughs.openOnInstall": false,
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/.hg/store/**": true,
+    "/home/laborant/.rootfs/**": true
+  }
+}

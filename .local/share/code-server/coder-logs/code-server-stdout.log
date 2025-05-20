@@ -1,0 +1,16 @@
+[2025-05-20T07:33:49.218Z] info  code-server 4.99.4 47d6d3ada5aadef6d221f3d612401eb3dad9299e
+[2025-05-20T07:33:49.220Z] info  Using user-data-dir /home/laborant/.local/share/code-server
+[2025-05-20T07:33:49.225Z] info  Using config file /home/laborant/.config/code-server/config.yaml
+[2025-05-20T07:33:49.225Z] info  HTTP server listening on http://127.0.0.1:50062/
+[2025-05-20T07:33:49.225Z] info    - Authentication is disabled
+[2025-05-20T07:33:49.225Z] info    - Not serving HTTPS
+[2025-05-20T07:33:49.225Z] info  Session server listening on /home/laborant/.local/share/code-server/code-server-ipc.sock
+[07:33:49] 
+
+
+
+
+[07:33:49] Extension host agent started.
+[07:33:52] [127.0.0.1][e08443f9][ManagementConnection] New connection established.
+[07:33:53] [127.0.0.1][457e4046][ExtensionHostConnection] New connection established.
+[07:33:53] [127.0.0.1][457e4046][ExtensionHostConnection] <1304> Launched Extension Host Process.
