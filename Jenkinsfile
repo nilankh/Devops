@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "go build main.go"
+                sh "go build app/main.go"
             }
         }
     }
