@@ -13,13 +13,20 @@ type Simple struct {
     Url         string
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
-    simple := Simple{"Hello", "World", r.Host}
+func SimpleFactory(host string) Simple {
+    return Simple{"Hello", "World", host}
+}
 
-    jsonOutput, _ := json.Marshal(simple)
+func handler(w http.ResponseWriter, r *http.Request) {
+    simple := SimpleFactory(r.Host)
+
+    jsonOutput, err := json.Marshal(simple)
+    if err != nil {
+        http.Error(w, "Failed to marshal JSON", http.StatusInternalServerError)
+        return
+    }
 
     w.Header().Set("Content-Type", "application/json")
-
     fmt.Fprintln(w, string(jsonOutput))
 }
 
