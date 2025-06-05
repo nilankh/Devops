@@ -18,29 +18,25 @@ pipeline {
                 '''
             }
         }
-        stage('Docker') {
-            steps {
-                sh '''
-                    docker build -t helloapp .
-                    docker tag helloapp ttl.sh/helloapp:2h
-                    docker push ttl.sh/helloapp:2h
-                '''
-            }
-        }
          stage('Deploy') {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'admin-id', keyFileVariable: 'SSH_KEY', usernameVariable: 'SSH_USER')]) {
                     sh '''
                         mkdir -p ~/.ssh
                         chmod 700 ~/.ssh
-                        ssh-keyscan -H docker >> ~/.ssh/known_hosts
+                        ssh-keyscan -H 3.92.24.77 >> ~/.ssh/known_hosts
 
-                        ssh -i "$SSH_KEY" "$SSH_USER"@docker '
+                        ssh -i "$SSH_KEY" "$SSH_USER"@3.92.24.77 'sudo systemctl stop main.service || true'
 
-                            docker pull ttl.sh/helloapp:2h
-                            docker stop helloapp || true
-                            docker rm helloapp || true
-                            docker run -d --name helloapp -p 4444:4444 ttl.sh/helloapp:2h
+                        scp -i "$SSH_KEY" main "$SSH_USER"@3.92.24.77:
+                        scp -i "$SSH_KEY" main.service "$SSH_USER"@3.92.24.77:
+
+                        ssh -i "$SSH_KEY" ubuntu@3.92.24.77 '
+                            sudo mv ~/main.service /etc/systemd/system/main.service
+                            sudo systemctl daemon-reload
+                            sudo systemctl enable --now main.service
+                            sudo systemctl enable main.service
+                            sudo systemctl restart main.service
                         '
                     '''
                 }
