@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: helloapp
+  name: myapp
+spec:
+  containers:
+  - image: ttl.sh/helloapp:2h
+    name: helloapp
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

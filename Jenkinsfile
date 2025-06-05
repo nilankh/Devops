@@ -28,23 +28,19 @@ pipeline {
             }
         }
          stage('Deploy') {
-            steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'admin-id', keyFileVariable: 'SSH_KEY', usernameVariable: 'SSH_USER')]) {
-                    sh '''
-                        mkdir -p ~/.ssh
-                        chmod 700 ~/.ssh
-                        ssh-keyscan -H docker >> ~/.ssh/known_hosts
+                steps {
+                    withCredentials([string(credentialsId: 'k-token', variable: 'K_TOKEN')]) {
+                        sh '''
+                            kubectl config set-cluster my-cluster --server=https://k:6443 --insecure-skip-tls-verify=true
+                            kubectl config set-credentials jenkins --token=$K_TOKEN
+                            kubectl config set-context jenkins-context --cluster=my-cluster --user=jenkins
+                            kubectl config use-context jenkins-context
 
-                        ssh -i "$SSH_KEY" "$SSH_USER"@docker '
-
-                            docker pull ttl.sh/helloapp:2h
-                            docker stop helloapp || true
-                            docker rm helloapp || true
-                            docker run -d --name helloapp -p 4444:4444 ttl.sh/helloapp:2h
-                        '
-                    '''
+                            kubectl apply -f definition.yaml
+                        '''
+                    }
                 }
             }
+
         }
     }
-}
